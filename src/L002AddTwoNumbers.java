@@ -1,4 +1,4 @@
-public class L001AddTwoNumbers {
+public class L002AddTwoNumbers {
 
 
     public static void main(String args[]){
