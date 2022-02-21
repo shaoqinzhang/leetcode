@@ -1,73 +1,28 @@
+import java.util.HashMap;
 public class L002AddTwoNumbers {
-
-
-    public static void main(String args[]){
-        ListNode p,q;
-        ListNode root1 = new ListNode(2);
-        q = new ListNode(4);
-        root1.next = q;
-        p = new  ListNode(3);
-        q.next = p;
-
-        ListNode root2 =  new ListNode(5);
-        q = new ListNode(6);
-        root2.next = q;
-        p = new  ListNode(4);
-        q.next = p;
-        ListNode result = addTwoNumbers(root1,root2);
-        show(root1);
-        show(root2);
-        show(result);
+    public  class ListNode {
+        int val;
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
-    public static ListNode addTwoNumbers(ListNode l1, ListNode l2){
-        ListNode p,q,r;
-        ListNode result;
-        int sum, c=0;
-        p = l1;
-        q = l2;
-        result = new ListNode(0);
-        r = result;
-        while (p != null && q != null){
-            sum = p.val+q.val+c;
-            c = sum / 10;
-            sum = sum % 10;
-            r.next = new ListNode(sum);
-            r = r.next;
-            p = p.next;
-            q = q.next;
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        int c = 0;
+        ListNode resHead = new ListNode(0);
+        ListNode curr = resHead;
+        while (l1 != null || l2 != null) {
+            int temp = (l1 != null ? l1.val : 0) +
+                       (l2 != null ? l2.val : 0) + c;
+            curr.next = new ListNode(temp % 10);
+            c = temp /10;
+            curr = curr.next;
+            l1 = l1 != null ? l1.next : null;
+            l2 = l2 != null ? l2.next : null;
         }
-        while (p != null){
-            sum = p.val+c;
-            c = sum / 10;
-            sum = sum % 10;
-            r.next = new ListNode(sum);
-            r = r.next;
-            p = p.next;
+        if (c != 0) {
+            curr.next = new ListNode(c);
         }
-        while (q != null){
-            sum = +q.val+c;
-            c = sum / 10;
-            sum = sum % 10;
-            r.next = new ListNode(sum);
-            r = r.next;
-            q = q.next;
-        }
-        if (c==1)
-            r.next = new ListNode(c);
-
-        return result.next;
+        return resHead.next;
     }
-
-    public static void show(ListNode root){
-        while(root != null){
-            System.out.print(root.val+" ");
-            root = root.next;
-        }
-        System.out.println();
-    }
-}
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x){ val = x;}
 }

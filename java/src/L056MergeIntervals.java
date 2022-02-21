@@ -22,14 +22,4 @@ public class L056MergeIntervals {
         return res.toArray(new int[0][]);
 
     }
-    public static void main(String[] args){
-        int[][] case1 ={{1,3},{2,6},{8,10},{15,18}};
-        L056MergeIntervals solution = new L056MergeIntervals();
-        for (int[] line : solution.merge(case1)) {
-            for (int x : line) {
-                System.out.print(x + ", ");
-            }
-            System.out.println();
-        }
-    }
 }
