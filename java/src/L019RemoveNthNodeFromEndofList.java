@@ -53,8 +53,8 @@ public class L019RemoveNthNodeFromEndofList {
     }
 
 }
-//class ListNode {
-//   int val;
-//    ListNode next;
-//    ListNode(int x) { val = x; }
-// }
+class ListNode {
+   int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
+ }
